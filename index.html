@@ -1,13 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>3d Todolist</title>
-    <script src="index.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-    <div class="text-[20px] font-bold">Test</div>
-</body>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div id="new_task">
+        <input type="text" placeholder="Add Your Tasks" />
+        <button id="push" class="font-semibold">Add</button>
+      </div>
+      <div id="tasks"></div>
+    </div>
+
+    <script src="index.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  </body>
 </html>
