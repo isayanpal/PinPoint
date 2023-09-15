@@ -1,3 +1,17 @@
+//date function
+function showDate(){
+  var date = new Date();
+
+  var day = date.getDate();
+  var month = date.getMonth();
+  var year = date.getFullYear();
+
+  var currentDate = `${day}-${month}-${year}`;
+
+  document.getElementById("Date").innerHTML= currentDate;
+}
+showDate();
+
 //clock function
 function showTime() {
   var date = new Date();
