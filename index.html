@@ -12,14 +12,16 @@
     />
   </head>
   <body>
-    <div id="Date"></div>
-    <div id="Clock" class="clock" onload="showTime()"></div>
-    <div class="container">
-      <div id="new_task">
-        <input type="text" placeholder="Add Your Tasks" />
-        <button id="push" class="font-semibold">Add</button>
+    <div class="flex flex-col justify-center items-center m-8">
+      <div id="Date" class="m-4"></div>
+      <div id="Clock" class="clock m-4" onload="showTime()"></div>
+      <div class="flex flex-col">
+        <div id="new_task">
+          <input type="text" placeholder="Add Your Tasks" />
+          <button id="push" class="font-semibold">Add</button>
+        </div>
+        <div id="tasks" class="flex flex-col"></div>
       </div>
-      <div id="tasks"></div>
     </div>
 
     <script src="index.js"></script>
