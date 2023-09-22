@@ -42,29 +42,63 @@ function showTime() {
 showTime();
 
 //todo list function
+
+// local storage function
+function saveTasksToLocalStorage(){
+  const tasks = document.querySelectorAll(".task span#taskName")
+  const taskList = [];
+
+  tasks.forEach(task => {
+    taskList.push(task.textContent)
+  })
+
+  localStorage.setItem('tasks', JSON.stringify(taskList))
+}
+// Load tasks from local storage when the page loads
+window.addEventListener('load', ()=>{
+  const storedTasks = JSON.parse(localStorage.getItem('tasks')) || []
+
+  storedTasks.forEach(taskText => {
+    addTaskToDOM(taskText)
+  })
+})
+
+// add tasks
+function addTaskToDOM(taskText) {
+  const tasksList = document.getElementById('tasks')
+  const li = document.createElement('div')
+  li.className='task'
+  li.innerHTML=`
+  <span id='taskName'>
+            ${taskText}
+        </span>
+        <button class='delete'>
+            <box-icon type='solid' name='trash'></box-icon>
+        </button>
+  `
+  tasksList.appendChild(li)
+
+  // update the local storage
+  saveTasksToLocalStorage()
+  
+  // clear input field
+  document.querySelector("#new_task input").value = ''
+
+  // delete functionality
+  var current_tasks = document.querySelectorAll(".delete");
+  for (var i = 0; i < current_tasks.length; i++) {
+    current_tasks[i].onclick = function () {
+      this.parentNode.remove();
+      saveTasksToLocalStorage();
+    };
+  }
+}
 document.querySelector("#push").onclick = function () {
+  const taskText = document.querySelector("#new_task input").value.trim()
   //Alert functionality
-  if (document.querySelector("#new_task input").value.length == 0) {
+  if (taskText.length == 0) {
     alert("Plzz enter the Task");
   } else {
-    //Adding items in todo-list
-    document.querySelector("#tasks").innerHTML += `
-        <div class='task'>
-        <span id='taskName'>
-            ${document.querySelector("#new_task input").value}
-            </span>
-            <button class='delete'>
-            <box-icon type='solid' name='trash'></box-icon>
-            </button>
-        </div>    
-        `;
-
-    //Delete functionality
-    var current_tasks = document.querySelectorAll(".delete");
-    for (var i = 0; i < current_tasks.length; i++) {
-      current_tasks[i].onclick = function () {
-        this.parentNode.remove();
-      };
-    }
+    addTaskToDOM(taskText)
   }
 };
