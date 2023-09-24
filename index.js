@@ -89,6 +89,10 @@ function addTaskToDOM(taskText) {
   for (var i = 0; i < current_tasks.length; i++) {
     current_tasks[i].onclick = function () {
       this.parentNode.remove();
+      Toastify({
+        text: "Task removed",
+        duration: 3000,
+      }).showToast();
       saveTasksToLocalStorage();
     };
   }
