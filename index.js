@@ -1,5 +1,5 @@
 //date function
-function showDate(){
+function showDate() {
   var date = new Date();
 
   var day = date.getDate();
@@ -8,7 +8,7 @@ function showDate(){
 
   var currentDate = `${day}-${month}-${year}`;
 
-  document.getElementById("Date").innerHTML= currentDate;
+  document.getElementById("Date").innerHTML = currentDate;
 }
 showDate();
 
@@ -44,45 +44,45 @@ showTime();
 //todo list function
 
 // local storage function
-function saveTasksToLocalStorage(){
-  const tasks = document.querySelectorAll(".task span#taskName")
+function saveTasksToLocalStorage() {
+  const tasks = document.querySelectorAll(".task span#taskName");
   const taskList = [];
 
-  tasks.forEach(task => {
-    taskList.push(task.textContent)
-  })
+  tasks.forEach((task) => {
+    taskList.push(task.textContent);
+  });
 
-  localStorage.setItem('tasks', JSON.stringify(taskList))
+  localStorage.setItem("tasks", JSON.stringify(taskList));
 }
 // Load tasks from local storage when the page loads
-window.addEventListener('load', ()=>{
-  const storedTasks = JSON.parse(localStorage.getItem('tasks')) || []
+window.addEventListener("load", () => {
+  const storedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-  storedTasks.forEach(taskText => {
-    addTaskToDOM(taskText)
-  })
-})
+  storedTasks.forEach((taskText) => {
+    addTaskToDOM(taskText);
+  });
+});
 
 // add tasks
 function addTaskToDOM(taskText) {
-  const tasksList = document.getElementById('tasks')
-  const li = document.createElement('div')
-  li.className='task'
-  li.innerHTML=`
+  const tasksList = document.getElementById("tasks");
+  const li = document.createElement("div");
+  li.className = "task";
+  li.innerHTML = `
   <span id='taskName'>
             ${taskText}
         </span>
         <button class='delete'>
             <box-icon type='solid' name='trash'></box-icon>
         </button>
-  `
-  tasksList.appendChild(li)
+  `;
+  tasksList.appendChild(li);
 
   // update the local storage
-  saveTasksToLocalStorage()
-  
+  saveTasksToLocalStorage();
+
   // clear input field
-  document.querySelector("#new_task input").value = ''
+  document.querySelector("#new_task input").value = "";
 
   // delete functionality
   var current_tasks = document.querySelectorAll(".delete");
@@ -94,11 +94,18 @@ function addTaskToDOM(taskText) {
   }
 }
 document.querySelector("#push").onclick = function () {
-  const taskText = document.querySelector("#new_task input").value.trim()
+  const taskText = document.querySelector("#new_task input").value.trim();
   //Alert functionality
   if (taskText.length == 0) {
-    alert("Plzz enter the Task");
+    Toastify({
+      text: "Please add something!",
+      duration: 3000,
+    }).showToast();
   } else {
-    addTaskToDOM(taskText)
+    addTaskToDOM(taskText);
+    Toastify({
+      text: "New Task added",
+      duration: 3000,
+    }).showToast();
   }
 };
