@@ -69,12 +69,14 @@ function addTaskToDOM(taskText) {
   const li = document.createElement("div");
   li.className = "task";
   li.innerHTML = `
-  <span id='taskName'>
+  <div class="  my-2 flex flex-row justify-between">
+  <span id='taskName'class='py-2'>
             ${taskText}
         </span>
-        <button class='delete'>
-            <box-icon type='solid' name='trash'></box-icon>
+        <button class='delete mt-1'>
+        <box-icon name='trash' color='#269be3'  ></box-icon>
         </button>
+  </div>
   `;
   tasksList.appendChild(li);
 
@@ -113,3 +115,8 @@ document.querySelector("#push").onclick = function () {
     }).showToast();
   }
 };
+// 3d effect
+document.querySelector(".card").addEventListener("mousemove", function (e) {
+  let xAxis = (window.innerWidth / 2 - e.clientX) / 10;
+  this.style.transform = `rotateY(${xAxis}deg)`;
+});

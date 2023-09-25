@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+body {
+  box-sizing: border-box;
+  background-color: #0e0205;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* 3d effect */
+.card-container {
+    perspective: 1000px;
+    padding: 20px;
+}
+
+.card {
+    width: 330px;
+    transform-style: preserve-3d;
+    animation: cardAnimation 1s alternate;
+}
+
+@keyframes cardAnimation {
+    0% {
+        transform: rotateY(10deg);
+    }
+    100%{
+        transform: rotateY(-10deg);
+    }
+}
