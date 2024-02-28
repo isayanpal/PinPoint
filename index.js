@@ -116,7 +116,10 @@ document.querySelector("#push").onclick = function () {
   }
 };
 // 3d effect
-document.querySelector(".card").addEventListener("mousemove", function (e) {
-  let xAxis = (window.innerWidth / 2 - e.clientX) / 10;
-  this.style.transform = `rotateY(${xAxis}deg)`;
-});
+const card = document.querySelector(".card");
+if (card) {
+  card.addEventListener("mousemove", function (e) {
+    let xAxis = (window.innerWidth / 2 - e.clientX) / 10;
+    this.style.transform = `rotateY(${xAxis}deg)`;
+  });
+}
