@@ -74,7 +74,7 @@ function addTaskToDOM(taskText) {
             ${taskText}
         </span>
         <button class='delete mt-1'>
-        <box-icon name='trash' color='#269be3'  ></box-icon>
+        <box-icon name='trash' color='#de2343'  ></box-icon>
         </button>
   </div>
   `;
